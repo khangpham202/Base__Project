@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login UI</title>
-    <link
-      rel="shortcut icon"
-      href="./public/img/login_image.jpg"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="login_image.jpg" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -40,8 +36,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./public/css/style.css" />
-    <link rel="stylesheet" href="./public/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <section class="box">
@@ -52,7 +47,7 @@
         <div></div>
       </div>
       <div class="form">
-        <h2>Login - Register</h2>
+        <h2>User Login</h2>
         <form class="form-login" method="POST">
           <input
             type="text"
@@ -117,13 +112,27 @@
             placeholder="Password"
           />
           <input type="submit" id="buy-tickets" value="Accept" />
+          <!-- <button id="buy-tickets" type="submit">
+            Accept
+            <i class="fas fa-check"></i>
+          </button> -->
         </div>
-
-        <footer class="modal-footer">
-          <p class="modal-help">Need <a href="#">help?</a></p>
-        </footer>
       </div>
     </form>
-    <script src="./public/js/modal.js"></script>
+    <script>
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", function () {
+        // toggle the type attribute
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // toggle the icon
+        this.classList.toggle("bi-eye");
+      });
+    </script>
+    <script src="./assets/js/modal.js"></script>
   </body>
 </html>
