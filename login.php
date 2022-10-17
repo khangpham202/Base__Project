@@ -48,7 +48,7 @@
       </div>
       <div class="form">
         <h2>User Login</h2>
-        <form class="form-login" method="POST">
+        <form class="form-login" method="POST" action="process_login.php">
           <input
             type="text"
             name="username"
@@ -78,7 +78,7 @@
         </form>
       </div>
     </section>
-    <form class="modal js-modal register-btn">
+    <form action="process_reg.php"  method="post" class="modal js-modal register-btn">
       <div class="modal-container js-modal-container">
         <div class="modal-close js-modal-close">
           <i class="fas fa-times"></i>
@@ -88,7 +88,7 @@
           <i class="fas fa-registered" style="margin-right: 10px"></i>
           REGISTER
         </header>
-
+        <form action="process_reg.php">
         <div class="modal-body">
           <label class="modal-label">
             <i class="fas fa-user"></i>
@@ -112,11 +112,14 @@
             placeholder="Password"
           />
           <input type="submit" id="buy-tickets" value="Accept" />
+
+          
           <!-- <button id="buy-tickets" type="submit">
             Accept
             <i class="fas fa-check"></i>
           </button> -->
         </div>
+        </form>
       </div>
     </form>
     <script>
