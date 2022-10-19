@@ -91,12 +91,13 @@ if(isset($_SESSION['id'])){
             ></i>
           </div>
           <input type="submit" class="btn" value="LOGIN" />
+          Remember password <input type="checkbox" name="remember"> 
           <p>If you don't have account, Click blow</p>
           <i class="fas fa-arrow-down" style="margin-top: -10px"></i>
           <button href="#" type="button" class="btn js-buy-ticket">
             REGISTER
           </button>
-      Ghi nhớ đăng nhập <input type="checkbox" name="remember"> 
+     
         </form>
       </div>
     </section>

@@ -60,8 +60,8 @@ if(empty($_SESSION['id'])){
             <ul class="barList">
               <li class="barItem"><a href="" class="active">All Employees</a></li>
               <li class="barItem"><a href="">Employee Salary</a></li>
+              <li class="barItem"><a href="">Manager: <?php echo $_SESSION['username']?></a></li>
               <li class="barItem"><a href="sigout.php">Logout</a></li>
-              <li class="barItem"></li>
             </ul>
           </div>
           <!-- /Sidebar -->
