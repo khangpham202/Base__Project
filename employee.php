@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(empty($_SESSION['id'])){
+  header('Location:login.php?error=Vui lòng đăng nhập');
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +60,7 @@
             <ul class="barList">
               <li class="barItem"><a href="" class="active">All Employees</a></li>
               <li class="barItem"><a href="">Employee Salary</a></li>
-              <li class="barItem"></li>
+              <li class="barItem"><a href="sigout.php">Logout</a></li>
               <li class="barItem"></li>
             </ul>
           </div>

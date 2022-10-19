@@ -1,3 +1,20 @@
+<?php 
+session_start();
+if(isset($_COOKIE['remember'])){
+  $id = $_COOKIE['remember'];
+  require 'connect.php';
+  $sql = "select * from user where id = '$id'";
+  $result =mysqli_query($connect,$sql);
+  $each = mysqli_fetch_array($result);
+  $_SESSION['id']= $each['id'];
+  $_SESSION['username']= $each['username'];
+
+}
+if(isset($_SESSION['id'])){
+  header('location:employee.php');
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,6 +56,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+   
     <section class="box">
       <div class="design">
         <div></div>
@@ -48,7 +66,10 @@
       </div>
       <div class="form">
         <h2>User Login</h2>
-        <form class="form-login" method="POST" action="process_login.php">
+        <form class="form-login" method="post" action="process_login.php">
+        <?php if(isset($_GET['error'])){ ?>
+             <p style="color:red"><?php  echo $_GET['error'];?></p>
+        <?php    }?>
           <input
             type="text"
             name="username"
@@ -75,9 +96,11 @@
           <button href="#" type="button" class="btn js-buy-ticket">
             REGISTER
           </button>
+      Ghi nhớ đăng nhập <input type="checkbox" name="remember"> 
         </form>
       </div>
     </section>
+    
     <form action="process_reg.php"  method="post" class="modal js-modal register-btn">
       <div class="modal-container js-modal-container">
         <div class="modal-close js-modal-close">
@@ -90,6 +113,9 @@
         </header>
         <form action="process_reg.php">
         <div class="modal-body">
+        <?php if(isset($_GET['error'])){ ?>
+             <p style="color:red"><?php  echo $_GET['error'];?></p>
+        <?php    }?>
           <label class="modal-label">
             <i class="fas fa-user"></i>
             Username
