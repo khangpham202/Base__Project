@@ -43,10 +43,7 @@ h5, .h5 {
 h6, .h6 {
 	font-size: 0.75rem;
 }
-.active{
-    text-decoration: underline;
-    color: #00c5fb !important;
-}
+
 a:hover,
 a:active,
 a:focus {
@@ -124,8 +121,11 @@ textarea.form-control {
 	font-feature-settings: 'liga';
 }
 .input-group-text {
-	background-color: #f7f7f7;
+	background-color: #fff;
+	color: #888;
 	border-color: #e3e3e3;
+	width: 100%;
+	text-align: left;
 }
 select.form-control[multiple] option, select.form-control[size] option {
     border-radius: 3px;
@@ -135,31 +135,7 @@ select.form-control[multiple], select.form-control[size] {
     height: 200px;
     padding: 7px;
 }
-/* sidebar */
-.sidebar{
-	background-color: #34444c;
-	width: 100%;
-	height: 100vh;
-	text-align: left;
-	padding: 35px 20px;
-}
-.sidebar span{
-	font-size: 25px;
-	color: #fff;
-}
-.barList{
-	padding-left: 0;
-	list-style: none;
-	margin-top: 20px;
-}
-.barItem{
-	padding: 10px 0;
-}
-.barItem a{
-	color: #b7c0cd;
-	font-style: 12px;
-	text-decoration: none;
-}
+
 
 /*-----------------
 	7. Modal
@@ -230,9 +206,6 @@ select.form-control[multiple], select.form-control[size] {
 -----------------------*/
 
 .page-wrapper {
-	/* left: 0; */
-	/* margin-left: 230px; */
-	/* position: relative; */
 	transition: all 0.2s ease-in-out;
 }
 .page-wrapper >.content {
@@ -270,9 +243,9 @@ select.form-control[multiple], select.form-control[size] {
     background-color: #fff;
 }
 .page-title {
-    color: #00c5fb;
-    font-size: 30px;
-    font-weight: 600;	
+	color: #1f1f1f;
+    font-size: 26px;
+    font-weight: 500;
     margin-bottom: 5px;
 }
 .page-sub-title {

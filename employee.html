@@ -11,13 +11,10 @@
     />
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
       crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      referrerpolicy="no-referrer"
     />
     <link
       rel="stylesheet"
@@ -40,8 +37,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="./assets/css/base.css" /> -->
     <link rel="stylesheet" href="./assets/css/employee.css" />
+    <link rel="stylesheet" href="./assets/css/base.css" />
   </head>
   <body>
     <div class="main-wrapper">
@@ -51,9 +48,15 @@
           <div class="sidebar col-lg-2">
             <span>Human Resource Management</span>
             <ul class="barList">
-              <li class="barItem"><a href="" class="active">All Employees</a></li>
-              <li class="barItem"><a href="">Employee Salary</a></li>
-              <li class="barItem"></li>
+              <li class="barItem">
+                <a href="./employee.html" class="active">All Employees</a>
+              </li>
+              <li class="barItem">
+                <a href="./salary.html">Employee Salary</a>
+              </li>
+              <li class="barItem">
+                <a href="./department.html">Department</a>
+              </li>
               <li class="barItem"></li>
             </ul>
           </div>
@@ -97,16 +100,15 @@
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <div class="form-group form-focus select-focus">
-                    <select class="select floating">
-                      <option>Select Designation</option>
-                      <option>Web Developer</option>
-                      <option>Web Designer</option>
-                      <option>Android Developer</option>
-                      <option>Ios Developer</option>
-                    </select>
-                    <!-- <label class="focus-label">Designation</label> -->
-                  </div>
+                  <select
+                    class="input-group-text form-group form-focus select-focus"
+                  >
+                    <option>Select Designation</option>
+                    <option>Web Developer</option>
+                    <option>Web Designer</option>
+                    <option>Android Developer</option>
+                    <option>Ios Developer</option>
+                  </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
                   <a href="#" class="btn btn-success btn-block"> Search </a>
@@ -115,310 +117,6 @@
               <!-- Search Filter -->
 
               <div class="row staff-grid-row">
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-02.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">John Doe</a>
-                    </h4>
-                    <div class="small text-muted">Web Designer</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-09.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">Richard Miles</a>
-                    </h4>
-                    <div class="small text-muted">Web Developer</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-10.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">John Smith</a>
-                    </h4>
-                    <div class="small text-muted">Android Developer</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-05.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">Mike Litorus</a>
-                    </h4>
-                    <div class="small text-muted">IOS Developer</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-11.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">Wilmer Deluna</a>
-                    </h4>
-                    <div class="small text-muted">Team Leader</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-12.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">Jeffrey Warden</a>
-                    </h4>
-                    <div class="small text-muted">Web Developer</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-13.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">Bernardo Galaviz</a>
-                    </h4>
-                    <div class="small text-muted">Web Developer</div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                  <div class="profile-widget">
-                    <div class="profile-img">
-                      <a href="profile.html" class="avatar"
-                        ><img src="assets\img\profiles\avatar-01.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                      <a
-                        href="#"
-                        class="action-icon dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                        ><i class="material-icons">&Xi;</i></a
-                      >
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#edit_employee"
-                          ><i class="fa fa-pencil m-r-5"></i> Edit</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_employee"
-                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a
-                        >
-                      </div>
-                    </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis">
-                      <a href="profile.html">Lesley Grauer</a>
-                    </h4>
-                    <div class="small text-muted">Team Leader</div>
-                  </div>
-                </div>
                 <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
                   <div class="profile-widget">
                     <div class="profile-img">
