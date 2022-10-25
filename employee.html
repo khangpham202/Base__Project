@@ -57,7 +57,7 @@
               <li class="barItem">
                 <a href="./department.html">Department</a>
               </li>
-              <li class="barItem"></li>
+              <li class="barItem"><a href="./desgination.html">Designation</a></li>
             </ul>
           </div>
           <!-- /Sidebar -->
@@ -271,7 +271,7 @@
                 </div>
               </div>
             </div>
-            <!-- /Page Content -->
+           
 
             <!-- Add Employee Modal -->
             <div
@@ -298,23 +298,23 @@
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="col-form-label"
-                              >First Name
-                              <span class="text-danger">*</span></label
+                              >Full Name
+                              </label
                             >
                             <input class="form-control" type="text" />
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label class="col-form-label">Last Name</label>
+                            <label class="col-form-label">Department Id</label>
                             <input class="form-control" type="text" />
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="col-form-label"
-                              >Username
-                              <span class="text-danger">*</span></label
+                              >Designation Id
+                              </label
                             >
                             <input class="form-control" type="text" />
                           </div>
@@ -322,30 +322,31 @@
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="col-form-label"
-                              >Email <span class="text-danger">*</span></label
+                              >Religion </label
                             >
                             <input class="form-control" type="email" />
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label class="col-form-label">Password</label>
-                            <input class="form-control" type="password" />
+                            <label class="col-form-label">Gender</label>
+                            <input class="form-control" type="text" />
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="col-form-label"
-                              >Confirm Password</label
-                            >
-                            <input class="form-control" type="password" />
+                              >Date of Birth</label> 
+                              <div class="cal-icon">
+                                <input class="form-control datetimepicker" type="text" value="05/06/1985">
+                              </div>
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="col-form-label"
-                              >Employee ID
-                              <span class="text-danger">*</span></label
+                              >Region
+                              </label
                             >
                             <input type="text" class="form-control" />
                           </div>
@@ -353,29 +354,17 @@
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="col-form-label"
-                              >Joining Date
-                              <span class="text-danger">*</span></label
+                              >Phone Number
+                              </label
                             >
-                            <div class="cal-icon">
-                              <input
-                                class="form-control datetimepicker"
-                                type="text"
-                              />
-                            </div>
+                            <input type="text" class="form-control" />
                           </div>
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Phone </label>
-                            <input class="form-control" type="text" />
-                          </div>
-                        </div>
-
                         <div class="col-md-6">
                           <div class="form-group">
                             <label
                               >Department
-                              <span class="text-danger">*</span></label
+                              </label
                             >
                             <select class="select">
                               <option>Select Department</option>
@@ -389,7 +378,7 @@
                           <div class="form-group">
                             <label
                               >Designation
-                              <span class="text-danger">*</span></label
+                              </label
                             >
                             <select class="select">
                               <option>Select Designation</option>
@@ -410,181 +399,134 @@
                 </div>
               </div>
             </div>
-            <!-- /Add Employee Modal -->
-
+            
             <!-- Edit Employee Modal -->
             <div
               id="edit_employee"
               class="modal custom-modal fade"
               role="dialog"
             >
-              <div
-                class="modal-dialog modal-dialog-centered modal-lg"
-                role="document"
-              >
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Edit Employee</h5>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >First Name
-                              <span class="text-danger">*</span></label
-                            >
-                            <input
-                              class="form-control"
-                              value="John"
-                              type="text"
-                            />
-                          </div>
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Employee</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Full Name
+                            </label
+                          >
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Last Name</label>
-                            <input
-                              class="form-control"
-                              value="Doe"
-                              type="text"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label">Department Id</label>
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Username
-                              <span class="text-danger">*</span></label
-                            >
-                            <input
-                              class="form-control"
-                              value="johndoe"
-                              type="text"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Designation Id
+                            </label
+                          >
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Email <span class="text-danger">*</span></label
-                            >
-                            <input
-                              class="form-control"
-                              value="johndoe@example.com"
-                              type="email"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Religion </label
+                          >
+                          <input class="form-control" type="email" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Password</label>
-                            <input
-                              class="form-control"
-                              value="johndoe"
-                              type="password"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label">Gender</label>
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Confirm Password</label
-                            >
-                            <input
-                              class="form-control"
-                              value="johndoe"
-                              type="password"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Employee ID
-                              <span class="text-danger">*</span></label
-                            >
-                            <input
-                              type="text"
-                              value="FT-0001"
-                              readonly=""
-                              class="form-control floating"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Joining Date
-                              <span class="text-danger">*</span></label
-                            >
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Date of Birth</label> 
                             <div class="cal-icon">
-                              <input
-                                class="form-control datetimepicker"
-                                type="text"
-                              />
+                              <input class="form-control datetimepicker" type="text" value="05/06/1985">
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Phone </label>
-                            <input
-                              class="form-control"
-                              value="9876543210"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label
-                              >Department
-                              <span class="text-danger">*</span></label
-                            >
-                            <select class="select">
-                              <option>Select Department</option>
-                              <option>Web Development</option>
-                              <option>IT Management</option>
-                              <option>Marketing</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label
-                              >Designation
-                              <span class="text-danger">*</span></label
-                            >
-                            <select class="select">
-                              <option>Select Designation</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Android Developer</option>
-                            </select>
-                          </div>
                         </div>
                       </div>
-
-                      <div class="submit-section">
-                        <button class="btn btn-primary submit-btn">Save</button>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Region
+                            </label
+                          >
+                          <input type="text" class="form-control" />
+                        </div>
                       </div>
-                    </form>
-                  </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Phone Number
+                            </label
+                          >
+                          <input type="text" class="form-control" />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >Department
+                            </label
+                          >
+                          <select class="select">
+                            <option>Select Department</option>
+                            <option>Web Development</option>
+                            <option>IT Management</option>
+                            <option>Marketing</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >Designation
+                            </label
+                          >
+                          <select class="select">
+                            <option>Select Designation</option>
+                            <option>Web Designer</option>
+                            <option>Web Developer</option>
+                            <option>Android Developer</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="submit-section">
+                      <button class="btn btn-primary submit-btn">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
-            <!-- /Edit Employee Modal -->
+            </div>
+           
 
             <!-- Delete Employee Modal -->
             <div
@@ -622,7 +564,7 @@
                 </div>
               </div>
             </div>
-            <!-- /Delete Employee Modal -->
+            
           </div>
           <!-- /Page Wrapper -->
         </div>
