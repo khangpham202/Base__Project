@@ -1,7 +1,6 @@
 <?php 
 
 
-
 require 'connect.php';
 $sql = "select * from nhan_vien";
 $result = mysqli_query($connect,$sql);

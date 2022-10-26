@@ -116,7 +116,7 @@ if(isset($_GET['manv'])){
 														<h6 class="text-muted"><?php echo $each['chuyennganh']?></h6>
 														<small class="text-muted">Software Engineer</small>
 														<div class="staff-id">Employee ID : <?php echo $each['manv']?></div>
-														<div class="small doj text-muted">Date of Join : 1st Jan 2013</div>
+														<div class="small doj text-muted">Date of Join : <?php echo $each['ngaybatdau']?></div>
 													</div>
 												</div>
 												<div class="col-md-7">
@@ -534,35 +534,38 @@ if(isset($_GET['manv'])){
 								</button>
 							</div>
 							<div class="modal-body">
-									<div class="row">
+								<form action="./edit.php" method="post" enctype="multipart">
+								<input type="hidden" name="manv" value ="<?php echo $each['manv']?>">
+								<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Citizen Identity Card Number</label>
-												<input class="form-control" type="text">
+												<input class="form-control" name="cccd" type="text" value="<?php echo $each['cccd']?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Where Issued</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" value="<?php echo $each['quequan']?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Date Of Issuance</label> <span class="text-danger">*</span></label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="ngaycapcccd" value="<?php echo $each['ngaycapcccd']?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Valid until</label>
-												<input class="form-control" type="text">
+												<input class="form-control" name="ngayhethancccd" type="text" value="<?php echo $each['ngayhethancccd']?>">
 											</div>
 										</div>	
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn">Submit</button>
 									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -578,35 +581,38 @@ if(isset($_GET['manv'])){
 								</button>
 							</div>
 							<div class="modal-body">
+									<form action="./edit.php" method="post" enctype="multipart/form">
+									<input type="hidden" name="manv" value ="<?php echo $each['manv']?>">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Health Insurance Card Number</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="sobhyte" value="<?php echo $each['sobhyte']?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Where Issued</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="noicapbhyte" value="<?php echo $each['noicapbhyte']?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Date Of Issuance</label> <span class="text-danger">*</span></label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="ngaycapbhyte"  value="<?php echo $each['ngaycapbhyte']?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Valid until</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="ngayhethanbhyte" value="<?php echo $each['ngayhethanbhyte'] ?>">
 											</div>
 										</div>	
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn">Submit</button>
 									</div>
+									</form>
 							</div>
 						</div>
 					</div>
@@ -622,35 +628,38 @@ if(isset($_GET['manv'])){
 								</button>
 							</div>
 							<div class="modal-body">
+									<form action="./edit.php" method="post">
+									<input type="hidden" name="manv" value ="<?php echo $each['manv']?>">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Social Insurance Card Number</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="sobhxh" value="<?php echo $each['sobhxh'] ?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Where Issued</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="noicapbhxh" value="<?php echo $each['noicapbhxh'] ?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Date Of Issuance</label> <span class="text-danger">*</span></label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="ngaycapbhxh" value="<?php echo $each['ngaycapbhxh'] ?>">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Valid until</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="ngayhethanbhxh" value="<?php echo $each['ngayhethanbhxh'] ?>">
 											</div>
 										</div>	
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn">Submit</button>
 									</div>
+									</form>
 							</div>
 						</div>
 					</div>

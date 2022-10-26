@@ -1,5 +1,9 @@
 <?php 
 session_start();
+if(isset($_SESSION['id'])){
+  header('location:employee.php');
+  exit;
+}
 if(isset($_COOKIE['remember'])){
   $id = $_COOKIE['remember'];
   require 'connect.php';
@@ -8,12 +12,8 @@ if(isset($_COOKIE['remember'])){
   $each = mysqli_fetch_array($result);
   $_SESSION['id']= $each['id'];
   $_SESSION['username']= $each['username'];
+}
 
-}
-if(isset($_SESSION['id'])){
-  header('location:employee.php');
-  exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
