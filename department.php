@@ -46,7 +46,7 @@
       <div class="container-fluid">
         <div class="row">
           <!-- Sidebar -->
-          <div class="sidebar col-lg-2">
+          <!-- <div class="sidebar col-lg-2">
             <span>Human Resource Management</span>
             <ul class="barList">
               <li class="barItem">
@@ -56,9 +56,9 @@
               <li class="barItem"><a href="./department.html" class="active">Department</a></li>
               <li class="barItem"></li>
             </ul>
-          </div>
+          </div> -->
           <!-- /Sidebar -->
-
+              <?php require 'sidebar.php';?>
           <!-- Page Wrapper -->
           <div class="page-wrapper col-lg-10">
             <!-- Page Content -->

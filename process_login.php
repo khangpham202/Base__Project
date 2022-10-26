@@ -7,7 +7,10 @@ if(isset($_POST['remember'])){
 }
 $username = $_POST['username'];
 $password = $_POST['password'];
-$rows = mysqli_query($connect,"select * from user where username = '$username' and password = '$password'");
+$sql ="select * from admin where username = '$username' and password = '$password'";
+// die($sql);
+$rows = mysqli_query($connect,$sql);
+// die($row);
 $count = mysqli_num_rows($rows);
 if($count==1){
     session_start();

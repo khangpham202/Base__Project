@@ -46,21 +46,7 @@
       <div class="container-fluid">
         <div class="row">
           <!-- Sidebar -->
-          <div class="sidebar col-lg-2">
-            <span>Human Resource Management</span>
-            <ul class="barList">
-              <li class="barItem">
-                <a href="./employee.html" >All Employees</a>
-              </li>
-              <li class="barItem">
-                <a href="./salary.html" class="active">Employee Salary</a>
-              </li>
-              <li class="barItem">
-                <a href="./department.html">Department</a>
-              </li>
-              <li class="barItem"></li>
-            </ul>
-          </div>
+          <?php require "sidebar.php";?>
           <!-- /Sidebar -->
 
           <!-- Page Wrapper -->

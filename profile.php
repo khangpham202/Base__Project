@@ -4,11 +4,20 @@ require 'connect.php';
 if(isset($_GET['manv'])){
 	$manv = $_GET['manv'];
 	$sql = "SELECT *
-	FROM nhan_vien,trinhdo,chucvu,hopdong
-	WHERE nhan_vien.manv=trinhdo.manv=chucvu.manv=hopdong.manv and nhan_vien.manv ='$manv';";
+	FROM nhan_vien
+	INNER JOIN trinhdo ON nhan_vien.manv = trinhdo.manv
+	
+	INNER JOIN chucvu ON nhan_vien.manv = chucvu.manv
+	INNER JOIN hopdong ON nhan_vien.manv = hopdong.manv
+	INNER JOIN phongban ON nhan_vien.manv = phongban.manv
+	WHERE nhan_vien.manv = $manv";
 	// die($sql);
+	// echo $manv;
 	$result = mysqli_query($connect,$sql);
 	$each = mysqli_fetch_array($result);
+	// echo $each['tencv'];
+	// die();
+	// die($each);
 	// $sql = "SELECT * chucvu where manv = '$manv'";
 	// $result = mysqli_query($connect,$sql);
 	// $chucvu = mysqli_fetch_array($result);
@@ -66,17 +75,7 @@ if(isset($_GET['manv'])){
       <div class="container-fluid">
         <div class="row">
 			 <!-- Sidebar -->
-			<div class="sidebar col-lg-2">
-				<span>Human Resource Management</span>
-				<ul class="barList">
-				  <li class="barItem">
-					<a href="./employee.html" class="active">All Employees</a>
-				  </li>
-				  <li class="barItem"><a href="./salary.html">Employee Salary</a></li>
-				  <li class="barItem"><a href="./department.html">Department</a></li>
-				  <li class="barItem"><a href="./desgination.html">Designation</a></li>
-				</ul>
-			</div>
+			<?php  require 'sidebar.php';?>
 			  <!-- /Sidebar -->
 		
 			  <!-- Page Wrapper -->
@@ -128,7 +127,7 @@ if(isset($_GET['manv'])){
 														</li>
 														<li>
 															<div class="title">Email:</div>
-															<div class="text"><?php echo $each['manv']?>@gmail.com</a></div>
+															<div class="text"><?php echo $manv?>@gmail.com</a></div>
 														</li>
 														<li>
 															<div class="title">Birthday:</div>
@@ -269,11 +268,11 @@ if(isset($_GET['manv'])){
 											<ul class="personal-info">
 												<li>
 													<div class="title">Staff Id:</div>
-													<div class="text"> <?php echo $each['manv']?></div>
+													<div class="text"> <?php echo $manv?></div>
 												</li>
 												<li>
 													<div class="title">Deptartment:</div>
-													<div class="text"><?php echo $each['sobhxh']?></div>
+													<div class="text"><?php echo $each['tenphongban']?></div>
 												</li>
 												<li>
 													<div class="title">Designation:</div>
@@ -313,7 +312,7 @@ if(isset($_GET['manv'])){
 					</div>
 				</div>
 				<!-- /Page Content -->
-				<form action="google.com">
+				<!-- <form action="google.com"> -->
 				<!-- Profile Modal -->
 				<div id="profile_info" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -435,6 +434,49 @@ if(isset($_GET['manv'])){
 				<!-- Personal Info Modal -->
 				<div id="personal_info_modal" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+						<!-- <div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Personal Information</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+								<div class="modal-body">
+									<form action="salary.php">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Full Name</label>
+												<input class="form-control" type="text" value="<?php echo $each['hoten'] ?> ">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Birth Date</label>
+												<div class="cal-icon">
+													<input class="form-control " type="text" value="<?php echo $each['ngaysinh'] ?> ">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Address</label> <span class="text-danger">*</span></label>
+												<input class="form-control" type="text" value="<?php echo $each['quequan'] ?> ">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Religion</label>
+												<input class="form-control" type="text"value="<?php echo $each['tongiao'] ?> ">
+											</div>
+										</div>	
+									</div>
+									<div class="submit-section">
+										<button type="button" class="btn btn-primary submit-btn">Submit</button>
+									</div>
+									</form>
+							</div>
+						</div> -->
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title">Personal Information</h5>
@@ -442,38 +484,41 @@ if(isset($_GET['manv'])){
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">
+								<div class="modal-body">
+									<form action="./edit.php" method="post" enctype="multipart/form">
+									<input type="hidden" name="manv" value ="<?php echo $each['manv']?>">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Full Name</label>
-												<input class="form-control" type="text">
+												<input class="form-control" type="text" name="hoten" value="<?php echo $each['hoten']?>" >
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Birth Date</label>
 												<div class="cal-icon">
-													<input class="form-control " type="text">
+													<input class="form-control " type="text" name="ngaysinh" value="<?php echo $each['ngaysinh']?>"> 
 												</div>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Address</label> <span class="text-danger">*</span></label>
-												<input class="form-control" type="text">
+												<input class="form-control" name="quequan" type="text"value="<?php echo $each['quequan']?>" > 
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Religion</label>
-												<input class="form-control" type="text">
+												<input class="form-control" name="tongiao" type="text"value="<?php echo $each['tongiao']?>"> 
 											</div>
 										</div>	
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
+										<button  class="btn btn-primary submit-btn">Submit</button>
 									</div>
+									</form>
 							</div>
 						</div>
 					</div>

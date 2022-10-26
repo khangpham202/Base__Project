@@ -1,11 +1,14 @@
 <?php 
-session_start();
-if(empty($_SESSION['id'])){
-  header('Location:login.php?error=Vui lòng đăng nhập');
-  exit;
-}
+
+
+
+require 'connect.php';
+$sql = "select * from nhan_vien";
+$result = mysqli_query($connect,$sql);
+
 ?>
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,13 +21,10 @@ if(empty($_SESSION['id'])){
     />
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
       crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      referrerpolicy="no-referrer"
     />
     <link
       rel="stylesheet"
@@ -47,30 +47,15 @@ if(empty($_SESSION['id'])){
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./assets/css/base.css" />
     <link rel="stylesheet" href="./assets/css/employee.css" />
+    <link rel="stylesheet" href="./assets/css/base.css" />
   </head>
   <body>
-    <?php 
-
-  require 'connect.php';
-  $sql = "select * from nhan_vien";
-  $result = mysqli_query($connect,$sql);
-
-    ?>
     <div class="main-wrapper">
       <div class="container-fluid">
         <div class="row">
           <!-- Sidebar -->
-          <div class="sidebar col-lg-2">
-            <span>Human Resource Management</span>
-            <ul class="barList">
-              <li class="barItem"><a href="employee.php" class="active">All Employees</a></li>
-              <li class="barItem"><a href="salary.php">Employee Salary</a></li>
-              <li class="barItem"><a href="">Manager: <?php echo $_SESSION['username']?></a></li>
-              <li class="barItem"><a href="sigout.php">Logout</a></li>
-            </ul>
-          </div>
+          <?php require "sidebar.php"?>
           <!-- /Sidebar -->
 
           <!-- Page Wrapper -->
@@ -111,16 +96,15 @@ if(empty($_SESSION['id'])){
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <div class="form-group form-focus select-focus">
-                    <select class="select floating">
-                      <option>Select Designation</option>
-                      <option>Web Developer</option>
-                      <option>Web Designer</option>
-                      <option>Android Developer</option>
-                      <option>Ios Developer</option>
-                    </select>
-                    <!-- <label class="focus-label">Designation</label> -->
-                  </div>
+                  <select
+                    class="input-group-text form-group form-focus select-focus"
+                  >
+                    <option>Select Designation</option>
+                    <option>Web Developer</option>
+                    <option>Web Designer</option>
+                    <option>Android Developer</option>
+                    <option>Ios Developer</option>
+                  </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
                   <a href="#" class="btn btn-success btn-block"> Search </a>
@@ -172,7 +156,7 @@ if(empty($_SESSION['id'])){
                 
               </div>
             </div>
-            <!-- /Page Content -->
+           
 
             <!-- Add Employee Modal -->
             <div
@@ -193,92 +177,105 @@ if(empty($_SESSION['id'])){
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
+                  <hr />
                   <div class="modal-body">
-                    <form action="add.php" method="post" enctype="multipart/form">
+                    <form action="add_employee.php" method="post" enctype="multipart/form">
+                      <h4 class="text-center mt-20">Profile Information</h4>
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label class="col-form-label"
-                              >First Name
-                              <span class="text-danger">*</span></label
-                            >
+                            <label class="col-form-label">Full Name </label>
                             <input class="form-control" type="text" name="hoten" />
                           </div>
                         </div>
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                           <div class="form-group">
-                            <label class="col-form-label">Last Name</label>
+                            <label class="col-form-label">Last Name </label>
                             <input class="form-control" type="text" />
                           </div>
-                        </div>
+                        </div> -->
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label class="col-form-label"
-                              >Username
-                              <span class="text-danger">*</span></label
-                            >
-                            <input class="form-control" type="text" />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Email <span class="text-danger">*</span></label
-                            >
-                            <input class="form-control" type="email" />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Password</label>
-                            <input class="form-control" type="password" />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Confirm Password</label
-                            >
-                            <input class="form-control" type="password" />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Employee ID
-                              <span class="text-danger">*</span></label
-                            >
-                            <input type="text" class="form-control" />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Joining Date
-                              <span class="text-danger">*</span></label
-                            >
+                            <label class="col-form-label">Birth Date</label>
                             <div class="cal-icon">
                               <input
                                 class="form-control datetimepicker"
                                 type="text"
+                                value="" name="ngaysinh"
                               />
                             </div>
                           </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-form-label">Phone </label>
-                            <input class="form-control" type="text" />
+                            <label>Gender</label>
+                            <select class="select form-control" name="gioitinh">
+                              <option value="male selected">Male</option>
+                              <option value="female">Female</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Religion</label>
+                            <input type="text" class="form-control" value="" name="tongiao" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Address</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value=""
+                              name="quequan"
+                            />
+                          </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Employee ID</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value=""
+                            />
+                          </div>
+                        </div> -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Date of Join</label>
+                            <input
+                              class="form-control datetimepicker"
+                              type="text"
+                              value="" name="ngaybatdau"
+                            />
                           </div>
                         </div>
 
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label
-                              >Department
-                              <span class="text-danger">*</span></label
-                            >
-                            <select class="select">
+                            <label>Phone Number</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value=""
+                              name="sdt"
+                            />
+                          </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" value="" />
+                          </div>
+                        </div> -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Department </label>
+                            <select class="select" name="tenphongban" >
                               <option>Select Department</option>
                               <option>Web Development</option>
                               <option>IT Management</option>
@@ -288,11 +285,8 @@ if(empty($_SESSION['id'])){
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label
-                              >Designation
-                              <span class="text-danger">*</span></label
-                            >
-                            <select class="select">
+                            <label>Designation </label>
+                            <select class="select" name="tencv">
                               <option>Select Designation</option>
                               <option>Web Designer</option>
                               <option>Web Developer</option>
@@ -301,7 +295,226 @@ if(empty($_SESSION['id'])){
                           </div>
                         </div>
                       </div>
-                      <div class="submit-section">
+                      <hr />
+                      <!-- <h4 class="text-center pb-2">Personal Information</h4>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Full Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="New York"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Birth Date</label>
+                            <input
+                              class="form-control datetimepicker"
+                              type="text"
+                              value="05/06/1985"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Address</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="631-889-3206"
+                            />
+                          </div>
+                        </div>
+                        
+                      </div> -->
+                      <hr />
+                      <h4 class="text-center pb-2">Citizen Identity Card</h4>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Citizen Identity Card Number</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="" name="cccd"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Where Issued</label>
+                            <input
+                              class="form-control datetimepicker"
+                              type="text"
+                              value="" name=""
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Date Of Issuance</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="" name="ngaycapcccd"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Valid until</label>
+                            <input type="text" class="form-control" value="" name="ngayhethancccd" />
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                      <h4 class="text-center pb-2">Health Insurance Card</h4>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Health Insurance Card Number</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value=""
+                              name="sobhyte"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Where Issued</label>
+                            <input
+                              class="form-control datetimepicker"
+                              type="text"
+                              value="" name="noicapbhyte"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Date Of Issuance</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="631-889-3206"name="ngaycapbhyte"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Valid until</label>
+                            <input type="text" class="form-control" value=""  name="ngayhethanbhyte"/>
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                      <h4 class="text-center pb-2">Social Insurance Card</h4>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Social Insurance Card Number</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="" name="sobhxh"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Where Issued</label>
+                            <input
+                              class="form-control datetimepicker"
+                              type="text"
+                              value="05/06/1985"name="noicapbhxh"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Date Of Issuance</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="631-889-3206"name="ngaycapbhxh"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Valid until</label>
+                            <input type="text" class="form-control" value=""name="ngayhethanbhxh" />
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                      <h4 class="text-center pb-2">Office Informations</h4>
+                      <div class="row">
+                        <!-- <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Staff Id</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value=""name=""
+                            />
+                          </div>
+                        </div> -->
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Specialization</label>
+                            <input
+                              class="form-control datetimepicker"
+                              type="text"
+                              value="05/06/1985"name="chuyennganh"
+                            />
+                          </div>
+                        </div>
+
+                        <!-- <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Designation</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="631-889-3206"name="tencv"
+                            />
+                          </div>
+                        </div>  -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Education</label>
+                            <input type="text" class="form-control" value=""name="tentrinhdo" />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Foreign Language Level</label>
+                            <input type="text" class="form-control" value=""name="trinhdongoaingu" />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Joining Date</label>
+                            <input type="text" class="form-control" value=""name="ngaybatdau" />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Work Experience</label>
+                            <input type="text" class="form-control" value="" name="noidung"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="submit-section pb-4">
                         <button class="btn btn-primary submit-btn">
                           Submit
                         </button>
@@ -311,181 +524,134 @@ if(empty($_SESSION['id'])){
                 </div>
               </div>
             </div>
-            <!-- /Add Employee Modal -->
-
+            
             <!-- Edit Employee Modal -->
             <div
               id="edit_employee"
               class="modal custom-modal fade"
               role="dialog"
             >
-              <div
-                class="modal-dialog modal-dialog-centered modal-lg"
-                role="document"
-              >
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Edit Employee</h5>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >First Name
-                              <span class="text-danger">*</span></label
-                            >
-                            <input
-                              class="form-control"
-                              value="John"
-                              type="text"
-                            />
-                          </div>
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Employee</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Full Name
+                            </label
+                          >
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Last Name</label>
-                            <input
-                              class="form-control"
-                              value="Doe"
-                              type="text"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label">Department Id</label>
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Username
-                              <span class="text-danger">*</span></label
-                            >
-                            <input
-                              class="form-control"
-                              value="johndoe"
-                              type="text"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Designation Id
+                            </label
+                          >
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Email <span class="text-danger">*</span></label
-                            >
-                            <input
-                              class="form-control"
-                              value="johndoe@example.com"
-                              type="email"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Religion </label
+                          >
+                          <input class="form-control" type="email" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Password</label>
-                            <input
-                              class="form-control"
-                              value="johndoe"
-                              type="password"
-                            />
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label">Gender</label>
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Confirm Password</label
-                            >
-                            <input
-                              class="form-control"
-                              value="johndoe"
-                              type="password"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Employee ID
-                              <span class="text-danger">*</span></label
-                            >
-                            <input
-                              type="text"
-                              value="FT-0001"
-                              readonly=""
-                              class="form-control floating"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label"
-                              >Joining Date
-                              <span class="text-danger">*</span></label
-                            >
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Date of Birth</label> 
                             <div class="cal-icon">
-                              <input
-                                class="form-control datetimepicker"
-                                type="text"
-                              />
+                              <input class="form-control datetimepicker" type="text" value="05/06/1985">
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <label class="col-form-label">Phone </label>
-                            <input
-                              class="form-control"
-                              value="9876543210"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label
-                              >Department
-                              <span class="text-danger">*</span></label
-                            >
-                            <select class="select">
-                              <option>Select Department</option>
-                              <option>Web Development</option>
-                              <option>IT Management</option>
-                              <option>Marketing</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label
-                              >Designation
-                              <span class="text-danger">*</span></label
-                            >
-                            <select class="select">
-                              <option>Select Designation</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Android Developer</option>
-                            </select>
-                          </div>
                         </div>
                       </div>
-
-                      <div class="submit-section">
-                        <button class="btn btn-primary submit-btn">Save</button>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Region
+                            </label
+                          >
+                          <input type="text" class="form-control" />
+                        </div>
                       </div>
-                    </form>
-                  </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="col-form-label"
+                            >Phone Number
+                            </label
+                          >
+                          <input type="text" class="form-control" />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >Department
+                            </label
+                          >
+                          <select class="select">
+                            <option>Select Department</option>
+                            <option>Web Development</option>
+                            <option>IT Management</option>
+                            <option>Marketing</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >Designation
+                            </label
+                          >
+                          <select class="select">
+                            <option>Select Designation</option>
+                            <option>Web Designer</option>
+                            <option>Web Developer</option>
+                            <option>Android Developer</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="submit-section">
+                      <button class="btn btn-primary submit-btn">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
-            <!-- /Edit Employee Modal -->
+            </div>
+           
 
             <!-- Delete Employee Modal -->
             <div
@@ -523,7 +689,7 @@ if(empty($_SESSION['id'])){
                 </div>
               </div>
             </div>
-            <!-- /Delete Employee Modal -->
+            
           </div>
           <!-- /Page Wrapper -->
         </div>
